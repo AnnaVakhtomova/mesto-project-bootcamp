@@ -3,6 +3,7 @@
   padding: 0;
   background: #000000;
   border-radius: 2px;
+  border: 0;
   height: 50px;
   font-family: 'Inter';
   font-style: normal;
@@ -11,9 +12,14 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
+  transition: opacity .3s;
 }
 
-@media screen and (max-width: 320px) {
+.popup__form-button:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
   .popup__form-button {
     margin-top: 15px;
     height: 46px;

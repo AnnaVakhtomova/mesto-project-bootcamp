@@ -27,7 +27,6 @@
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-
         <section class="photo">
           <ul class="photo__cards">
             <li class="photo__card">
@@ -38,68 +37,41 @@
               />
               <div class="photo__info">
                 <h2 class="photo__title">Карачаевск</h2>
+                <button class="photo__like" type="button"></button>
+              </div>
+            </li>
+            <li class="photo__card">
+              <img class="photo__image" src="images/elbrus.png" alt="Эльбрус" />
+              <div class="photo__info">
+                <h2 class="photo__title">Гора Эльбрус</h2>
                 <button class="photo__like"></button>
               </div>
             </li>
-          </ul>
-
-          <ul class="photo__cards">
+            <li class="photo__card">
+              <img class="photo__image" src="images/dombai.png" alt="Домбай" />
+              <div class="photo__info">
+                <h2 class="photo__title">Домбай</h2>
+                <button class="photo__like"></button>
+              </div>
+            </li>
             <li class="photo__card">
               <img
                 class="photo__image"
                 src="images/elbrus.png"
-                alt="Карачаевск"
+                alt="Гора Эльбрус"
               />
               <div class="photo__info">
                 <h2 class="photo__title">Гора Эльбрус</h2>
                 <button class="photo__like"></button>
               </div>
             </li>
-          </ul>
-
-          <ul class="photo__cards">
             <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/dombai.png"
-                alt="Карачаевск"
-              />
+              <img class="photo__image" src="images/dombai.png" alt="Домбай" />
               <div class="photo__info">
                 <h2 class="photo__title">Домбай</h2>
                 <button class="photo__like"></button>
               </div>
             </li>
-          </ul>
-
-          <ul class="photo__cards">
-            <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/elbrus.png"
-                alt="Карачаевск"
-              />
-              <div class="photo__info">
-                <h2 class="photo__title">Гора Эльбрус</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-          </ul>
-
-          <ul class="photo__cards">
-            <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/dombai.png"
-                alt="Карачаевск"
-              />
-              <div class="photo__info">
-                <h2 class="photo__title">Домбай</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-          </ul>
-
-          <ul class="photo__cards">
             <li class="photo__card">
               <img
                 class="photo__image"
@@ -121,21 +93,12 @@
     <div class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input
-            class="popup__form-input"
-            value="Жак-Ив Кусто"
-            placeholder="Имя"
-          />
-          <input
-            class="popup__form-input"
-            value="Исследователь океана"
-            placeholder="О себе"
-          />
-          <button class="popup__form-button">Сохранить</button>
+        <form class="popup__form" name="profile_form">
+          <input type="text" class="popup__form-input" value="Жак-Ив Кусто" placeholder="Имя" name="name"/>
+          <input type="text" class="popup__form-input" value="Исследователь океана" placeholder="О себе" name="workspace"/>
+          <button class="popup__form-button" type="button">Сохранить</button>
         </form>
-
-        <button class="popup__close"></button>
+        <button class="popup__close" type="button"></button>
       </div>
     </div>
   </body>
