@@ -4,9 +4,9 @@
   background-color: #000000;
   background-repeat: no-repeat;
   background-position: center;
-  align-self: flex-end;
-  width: 24px;
-  height: 24px;
+  align-self: center;
+  min-width: 24px;
+  min-height: 24px;
   transition: opacity .3s;
 }
 
@@ -15,9 +15,9 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1080px) {
   .profile__button {
-    width: 16px;
-    height: 16px;
+    min-width: 18px;
+    min-height: 18px;
   }
 }
