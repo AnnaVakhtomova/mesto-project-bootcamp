@@ -29,60 +29,6 @@
         </section>
         <section class="photo">
           <ul class="photo__cards">
-            <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/karachaevsk.jpg"
-                alt="Карачаевск"
-              />
-              <div class="photo__info">
-                <h2 class="photo__title">Карачаевск</h2>
-                <button class="photo__like" type="button"></button>
-              </div>
-            </li>
-            <li class="photo__card">
-              <img class="photo__image" src="images/elbrus.png" alt="Эльбрус" />
-              <div class="photo__info">
-                <h2 class="photo__title">Гора Эльбрус</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-            <li class="photo__card">
-              <img class="photo__image" src="images/dombai.png" alt="Домбай" />
-              <div class="photo__info">
-                <h2 class="photo__title">Домбай</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-            <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/elbrus.png"
-                alt="Гора Эльбрус"
-              />
-              <div class="photo__info">
-                <h2 class="photo__title">Гора Эльбрус</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-            <li class="photo__card">
-              <img class="photo__image" src="images/dombai.png" alt="Домбай" />
-              <div class="photo__info">
-                <h2 class="photo__title">Домбай</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
-            <li class="photo__card">
-              <img
-                class="photo__image"
-                src="images/karachaevsk.jpg"
-                alt="Карачаевск"
-              />
-              <div class="photo__info">
-                <h2 class="photo__title">Карачаевск</h2>
-                <button class="photo__like"></button>
-              </div>
-            </li>
           </ul>
         </section>
       </main>
@@ -90,16 +36,54 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup">
+
+    <div id="profile_edit" class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="profile_form">
-          <input type="text" class="popup__form-input" value="Жак-Ив Кусто" placeholder="Имя" name="name"/>
-          <input type="text" class="popup__form-input" value="Исследователь океана" placeholder="О себе" name="workspace"/>
-          <button class="popup__form-button" type="button">Сохранить</button>
+          <input type="text" class="popup__form-input popup__form-input_name" value="" placeholder="Имя" name="name"/>
+          <input type="text" class="popup__form-input popup__form-input_about" value="" placeholder="О себе" name="workspace"/>
+          <button class="popup__form-button" type="submit">Сохранить</button>
         </form>
         <button class="popup__close" type="button"></button>
       </div>
     </div>
+
+    <div id="image_add" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="profile_form">
+          <input type="text" class="popup__form-input popup__form-input_name" value="" placeholder="Название" name="name"/>
+          <input type="text" class="popup__form-input popup__form-input_about" value="" placeholder="Ссылка на картинку" name="link"/>
+          <button class="popup__form-button" type="submit">Создать</button>
+        </form>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </div>
+
+    <div id="image_popup" class="popup popup_image">
+      <figure class="popup__container-image">
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__image-title"></figcaption>
+        <button class="popup__close" type="button"></button>
+      </figure>
+    </div>
+
+    <template id="card">
+      <li class="photo__card">
+        <img
+          class="photo__image"
+          src=""
+          alt=""
+        />
+        <div class="photo__info">
+          <h2 class="photo__title"></h2>
+          <button class="photo__like" type="button"></button>
+        </div>
+        <button class="photo__delete" type="button"></button>
+      </li>
+    </template> 
+
+    <script src="pages/index.js"></script>
   </body>
 </html>
