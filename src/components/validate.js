@@ -26,6 +26,7 @@ const hideError = (form, element, inputErrorClass, errorClass) => {
 
 const checkInputValidity = (form, element, inputErrorClass, errorClass) => {
   if (!element.validity.valid) {
+    element.classList.add("popup__form-input_error");
     showError(
       form,
       element,
@@ -34,6 +35,7 @@ const checkInputValidity = (form, element, inputErrorClass, errorClass) => {
       errorClass
     );
   } else {
+    element.classList.remove("popup__form-input_error");
     hideError(form, element, inputErrorClass, errorClass);
   }
 };
@@ -104,20 +106,24 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.classList.add(inactiveButtonClass);
+    disableButton(buttonElement, inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
-    buttonElement.classList.remove(inactiveButtonClass);
+    enableButton(buttonElement, inactiveButtonClass);
   }
 };
 
-const hasInvalidInput = (inputList) => {
-  console.log(inputList);
-  inputList.forEach((element) => {
-    console.log(element.validity);
-  });
-  //todo
+export const disableButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+};
 
+const enableButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
+};
+
+const hasInvalidInput = (inputList) => {
   // проходим по этому массиву методом some
   return inputList.some((inputElement) => {
     // Если поле не валидно, колбэк вернёт true

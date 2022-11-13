@@ -1,5 +1,10 @@
+import { openPopup } from "./modal";
+
 const photoCards = document.querySelector(".photo__cards");
 const cardTemplate = document.querySelector("#card").content;
+const popupImage = document.querySelector("#image_popup");
+const popupImageImg = popupImage.querySelector(".popup__image ");
+const popupImageTitle = popupImage.querySelector(".popup__image-title");
 
 const initialCards = [
   {
@@ -59,9 +64,9 @@ function createCard(name, link) {
     });
 
   photoImage.addEventListener("click", function (event) {
-    popupImg.src = link;
-    popupImg.alt = name;
-    popupImgTitle.textContent = name;
+    popupImageImg.src = link;
+    popupImageImg.alt = name;
+    popupImageTitle.textContent = name;
 
     openPopup(popupImage);
   });
