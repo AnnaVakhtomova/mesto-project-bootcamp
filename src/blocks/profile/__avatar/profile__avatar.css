@@ -1,14 +1,32 @@
 .profile__avatar {
   border-radius: 50%;
   width: 120px;
+  object-fit: cover;
+  height: 120px;
   margin: 0 30px 0 0;
+  transition: opacity .3s;
 }
-      
+
 @media screen and (max-width: 1080px) {
   .profile__avatar {
-     margin: 0 auto;
-     width: 120px;
-   }
-} 
+    margin: 0 auto;
+    width: 120px;
+  }
+}
+
+.profile__avatar-container {
+  background-image: url(../../../images/EditIcon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px 26px;
+
+  width: 120px;
+  height: 120px
+}
 
 
+.profile__avatar:hover {
+  opacity: 0.2;
+  cursor: pointer;
+
+}
