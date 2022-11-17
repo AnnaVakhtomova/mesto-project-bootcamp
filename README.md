@@ -1,6 +1,6 @@
 # Проект: Место
 
-[Ссылка на проект](https://annavakhtomova.github.io/mesto-project-bootcamp/index.html)
+[Ссылка на проект](https://annavakhtomova.github.io/mesto-project-bootcamp/)
 
 ### Обзор
 
