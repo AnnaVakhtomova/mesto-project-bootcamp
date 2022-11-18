@@ -51,24 +51,27 @@ function renderProfileInfo(name, about, avatar) {
   profileAvatar.src = avatar;
 }
 
-Api.getInfo()
-  .then((result) => {
-    renderProfileInfo(result.name, result.about, result.avatar);
-    return result._id;
+Promise.all([Api.getInfo(), Api.getCards()])
+  .then(([info, cards]) => {
+    renderProfileInfo(info.name, info.about, info.avatar);
+    renderInitialCards(cards, info._id);
   })
-  .then((userId) => {
-    Api.getCards().then((cards) => renderInitialCards(cards, userId));
+  .catch((err) => {
+    console.log(err);
   });
 
 export function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   popupProfileFormButton.textContent = "Сохранение...";
   Api.editProfile(popupProfileInputName.value, popupProfileInputAbout.value)
-    .then((result) =>
-      renderProfileInfo(result.name, result.about, result.avatar)
-    )
-    .finally((_) => {
+    .then((result) => {
+      renderProfileInfo(result.name, result.about, result.avatar);
       closePopup(popupProfile);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((_) => {
       popupProfileFormButton.textContent = "Сохранить";
     });
 }
@@ -77,9 +80,14 @@ export function handleAddImageFormSubmit(evt) {
   evt.preventDefault();
   popupAddImageButton.textContent = "Сохранение...";
   Api.addCard(imageNameElement.value, imageLinkElement.value)
-    .then((result) => addCard(result.owner._id, result.name, result.link))
-    .finally((_) => {
+    .then((result) => {
+      addCard(result._id, result.name, result.link, result.likes.length);
       closePopup(popupAddImage);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((_) => {
       popupAddImageButton.textContent = "Сохранить";
     });
 }
@@ -108,9 +116,12 @@ export function handleChangeAvatarFormSubmit(evt) {
   Api.changeAvatar(avatarInputElement.value)
     .then((result) => {
       profileAvatar.src = result.avatar;
+      closePopup(popupChangeAvatar);
+    })
+    .catch((err) => {
+      console.log(err);
     })
     .finally((_) => {
-      closePopup(popupChangeAvatar);
       popupChangeAvatarButton.textContent = "Сохранить";
     });
 }
@@ -142,6 +153,6 @@ enableValidation({
   inputSelector: ".popup__form-input",
   submitButtonSelector: ".popup__form-button",
   inactiveButtonClass: "popup__form-button_inactive",
-  inputErrorClass: "form__input_type_error",
+  inputErrorClass: "popup__form-input_error",
   errorClass: "form__input-error_active",
 });

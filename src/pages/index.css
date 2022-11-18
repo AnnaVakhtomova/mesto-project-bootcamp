@@ -40,27 +40,7 @@
 @import url(../blocks/popup/__input-error/form__input-error.css);
 @import url(../blocks/popup/__input-error/_active/form__input-error_active.css);
 @import url(../blocks/popup/__form-input/_error/popup__form-input_error.css);
-
-.photo__like-container {
-  display: flex;
-  flex-direction: column;
-  width: 22px;
-  height: 35px;
-}
-
-
-.photo__like-count {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  text-align: center;
-  color: #000000;
-}
-
-.profile__change-avatar-icon {
-  background-image: url(../images/EditIcon.svg);
-  position: absolute;
-  opacity: 0;
-}
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
+@import url(../blocks/photo/__like-container/photo__like-container.css);
+@import url(../blocks/profile/__change-avatar-icon/profile__change-avatar-icon.css);
+@import url(../blocks/photo/__like-count/photo__like-count.css);

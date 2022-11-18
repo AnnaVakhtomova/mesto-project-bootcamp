@@ -1,0 +1,17 @@
+.profile__avatar-container {
+  background-image: url(../../../images/EditIcon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px 26px;
+  margin: 0 30px 0 0;
+  width: 120px;
+  height: 120px
+}
+
+
+@media screen and (max-width: 1080px) {
+  .profile__avatar-container {
+    margin: 0 auto;
+    width: 120px;
+  }
+}
