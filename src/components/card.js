@@ -14,23 +14,26 @@ export function renderInitialCards(cards, userId) {
       element.name,
       element.link,
       element.likes.length,
-      element.owner._id === userId
+      element.owner._id === userId,
+      element.likes.some((e) => e._id === userId)
     );
     photoCards.append(card);
   });
 }
 
 export function addCard(id, name, link, likes) {
-  const card = createCard(id, name, link, likes, true);
+  const card = createCard(id, name, link, likes, true, false);
   photoCards.prepend(card);
 }
 
-function createCard(id, name, link, likes, canDelete) {
+function createCard(id, name, link, likes, canDelete, liked) {
   const card = cardTemplate.querySelector(".photo__card").cloneNode(true);
   const photoImage = card.querySelector(".photo__image");
   photoImage.src = link;
   photoImage.alt = name;
-
+  if (liked) {
+    card.querySelector(".photo__like").classList.add("photo__like_active");
+  }
   const likeCountElement = card.querySelector(".photo__like-count");
   likeCountElement.textContent = likes;
   card.querySelector(".photo__title").textContent = name;
@@ -38,24 +41,36 @@ function createCard(id, name, link, likes, canDelete) {
     .querySelector(".photo__like")
     .addEventListener("click", function (event) {
       if (event.target.classList.contains("photo__like_active")) {
-        Api.dislike(id).then((result) => {
-          event.target.classList.remove("photo__like_active");
-          likeCountElement.textContent = result.likes.length;
-        });
+        Api.dislike(id)
+          .then((result) => {
+            event.target.classList.remove("photo__like_active");
+            likeCountElement.textContent = result.likes.length;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
-        Api.like(id).then((result) => {
-          event.target.classList.add("photo__like_active");
-          likeCountElement.textContent = result.likes.length;
-        });
+        Api.like(id)
+          .then((result) => {
+            event.target.classList.add("photo__like_active");
+            likeCountElement.textContent = result.likes.length;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     });
 
   const deleteButton = card.querySelector(".photo__delete");
   if (canDelete) {
     deleteButton.addEventListener("click", function (event) {
-      Api.deleteCard(id).then(() => {
-        event.target.closest(".photo__card").remove();
-      });
+      Api.deleteCard(id)
+        .then(() => {
+          event.target.closest(".photo__card").remove();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   } else {
     deleteButton.remove();

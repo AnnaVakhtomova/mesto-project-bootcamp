@@ -26,7 +26,6 @@ const hideError = (form, element, inputErrorClass, errorClass) => {
 
 const checkInputValidity = (form, element, inputErrorClass, errorClass) => {
   if (!element.validity.valid) {
-    element.classList.add("popup__form-input_error");
     showError(
       form,
       element,
@@ -35,7 +34,6 @@ const checkInputValidity = (form, element, inputErrorClass, errorClass) => {
       errorClass
     );
   } else {
-    element.classList.remove("popup__form-input_error");
     hideError(form, element, inputErrorClass, errorClass);
   }
 };

@@ -1,0 +1,5 @@
+.profile__change-avatar-icon {
+  background-image: url(../../../images/EditIcon.svg);
+  position: absolute;
+  opacity: 0;
+}
